@@ -1,0 +1,142 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f9fc;
+  --panel: #ffffff;
+  --text: #102a43;
+  --muted: #486581;
+  --accent: #0f609b;
+  --accent-dark: #0a4b78;
+  --border: #d9e2ec;
+  --success-bg: #e6f4ea;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+.page-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+h1,
+h2,
+h3 {
+  margin: 0.25rem 0 0.75rem;
+}
+.subtitle {
+  color: var(--muted);
+  margin-top: 0;
+}
+.tracker {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  align-items: end;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 1rem;
+}
+button {
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover {
+  background: var(--accent-dark);
+}
+.inline-note {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.message {
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  background: var(--success-bg);
+  font-size: 0.92rem;
+}
+.table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+th {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.totals {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.total-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+.total-list {
+  margin: 0;
+  padding-left: 1rem;
+}
+.embed-help {
+  margin-top: 1.5rem;
+  background: #fff;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+}
+pre {
+  overflow: auto;
+  background: #102a43;
+  color: #d9e2ec;
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+.action-row {
+  margin-top: 0.6rem;
+}
+button.secondary {
+  background: #627d98;
+}
+button.secondary:hover {
+  background: #486581;
+}
