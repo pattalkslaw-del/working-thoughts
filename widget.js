@@ -104,6 +104,7 @@
           <p class="inline-note">Entries are saved in this browser and reloaded automatically.</p>
           <div class="action-row">
             <button id="clear-entries" type="button" class="secondary">Clear Saved Entries</button>
+            <button id="export-csv" type="button" class="secondary">Export CSV</button>
           </div>
           <div id="form-message" class="message" hidden></div>
         </form>
@@ -146,6 +147,7 @@
 
     const form = container.querySelector("#hours-form");
     const clearButton = container.querySelector("#clear-entries");
+    const exportButton = container.querySelector("#export-csv");
     const message = container.querySelector("#form-message");
     const entriesBody = container.querySelector("#entries-body");
     const monthTotals = container.querySelector("#month-totals");
@@ -224,6 +226,31 @@
       message.textContent = "All saved entries have been cleared for this browser.";
       message.hidden = false;
       render();
+    });
+
+    exportButton.addEventListener("click", function () {
+      if (state.entries.length === 0) {
+        message.textContent = "No entries to export.";
+        message.hidden = false;
+        return;
+      }
+      const header = "Date,Activity,Arrowmen,Hours Per Arrowman,Total Hours";
+      const rows = [...state.entries]
+        .sort((a, b) => (a.date < b.date ? 1 : -1))
+        .map((e) => {
+          const escaped = e.event.replace(/"/g, '""');
+          return `${e.date},"${escaped}",${e.arrowmen},${e.hours},${e.totalHours}`;
+        });
+      const csv = [header, ...rows].join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "volunteer-hours.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+      message.textContent = "CSV exported.";
+      message.hidden = false;
     });
 
     render();
